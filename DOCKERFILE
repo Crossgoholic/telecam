@@ -1,0 +1,14 @@
+FROM python:3.9
+
+ENV EMAIL $email
+ENV PASSWORD $password
+ENV HOST $hostname
+ENV PORT 993
+ENV TELEGRAMAPIKEY $apikey
+ENV CHATID $chatid
+
+ADD telecam.py .
+ADD requirements.txt .
+
+RUN pip install -r requirements.txt
+CMD ["python", "./telecam.py"]
