@@ -31,7 +31,7 @@ async def sendCamVideo(videofile: bytes, caption: str, chatID: int) -> bool:
 async def getEmails(session:imaplib.IMAP4_SSL) -> list:
     task = []
     session.select("Inbox")
-    typ, data = session.search(None, ('TO "cam@scharks.de"'))
+    typ, data = session.search(None, (f'TO "{os.getenv("EMAIL")}"'))
     for num in data[0].split():
         typ, data = session.fetch(num, '(RFC822)')
         rawEmail = data[0][1]
